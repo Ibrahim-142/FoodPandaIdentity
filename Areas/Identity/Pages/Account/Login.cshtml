@@ -1,0 +1,106 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #fff7f9;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .login-card {
+            background-color: #ffffffee;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-title {
+            font-weight: 700;
+            color: #e6005c;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-primary {
+            background-color: #e6005c;
+            border: none;
+        }
+
+            .btn-primary:hover {
+                background-color: #b80048;
+            }
+
+        .form-check-label {
+            font-size: 0.95rem;
+        }
+
+        a {
+            color: #e6005c;
+            text-decoration: none;
+        }
+
+            a:hover {
+                color: #b80048;
+                text-decoration: underline;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="d-flex justify-content-center align-items-center min-vh-100">
+        <form id="account" method="post" class="login-card">
+            <h3 class="text-center login-title">Login</h3>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+
+            <div class="mb-3">
+                <label asp-for="Input.Email" class="form-label">Email address</label>
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Input.Password" class="form-label">Password</label>
+                <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="••••••••" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 form-check">
+                <input class="form-check-input" asp-for="Input.RememberMe" />
+                <label class="form-check-label" asp-for="Input.RememberMe">
+                    @Html.DisplayNameFor(m => m.Input.RememberMe)
+                </label>
+            </div>
+
+            <button id="login-submit" type="submit" class="btn btn-primary w-100 rounded-pill mb-3">Login</button>
+
+            <div class="text-center mt-3">
+                <p><a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a></p>
+                <p><a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a></p>
+                <p><a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+</body>
+
+</html>
