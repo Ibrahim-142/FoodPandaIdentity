@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "AdminLayout";
+}
+
+<div class="container mt-5">
+    <div class="alert alert-danger">
+        <h4>Error Occurred</h4>
+        <p>Source Function: @TempData["ErrorSource"]</p>
+        <p>Message: @TempData["ErrorMessage"]</p>
+    </div>
+
+    <a href="@Url.Action("AdminDashboard", "Admin")" class="btn btn-secondary">Back to Dashboard</a>
+</div>

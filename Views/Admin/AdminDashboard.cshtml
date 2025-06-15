@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #fff7f9;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .admin-container {
+            background-color: #ffffffee;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 3rem;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .admin-btn {
+            background-color: #e6005c;
+            color: white;
+            font-weight: 600;
+            border: none;
+            padding: 1rem;
+            width: 100%;
+            border-radius: 2rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            .admin-btn:hover {
+                background-color: #b80048;
+                transform: translateY(-3px);
+            }
+
+        h3 {
+            color: #e6005c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    @{
+        Layout = "AdminLayout";
+    }
+
+    <div class="d-flex justify-content-center align-items-center min-vh-100">
+        <div class="admin-container text-center">
+            <h3 class="mb-4">Welcome Admin</h3>
+            <div class="row gy-3 text-start">
+                <div class="col-12">
+                    <a href="@Url.Action("Add", "Admin")">
+                        <button class="admin-btn">1. Add A New Food Item</button>
+                    </a>
+                </div>
+                <div class="col-12">
+                    <a href="@Url.Action("Edit", "Admin")">
+                        <button class="admin-btn">2. Edit Existing Food Items</button>
+                    </a>
+                </div>
+                <div class="col-12">
+                    <a href="@Url.Action("Delete", "Admin")">
+                        <button class="admin-btn">3. Delete An Existing Food Item</button>
+                    </a>
+                </div>
+                <div class="col-12">
+                    <a href="@Url.Action("ViewPlacedOrders_Admin", "Order")">
+                        <button class="admin-btn">4. View Placed Orders</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

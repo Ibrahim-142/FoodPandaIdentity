@@ -1,0 +1,103 @@
+﻿@model List<Product>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Customer View</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fff7f9; 
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        .product-card {
+            background-color: #ffffffee;
+            color: #333;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+            .product-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            }
+
+        .object-fit-cover {
+            object-fit: cover;
+            width: 100%;
+            height: 150px;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+
+        .card-body {
+            padding: 0.75rem 1rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .card-text {
+            flex-grow: 1;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; 
+            -webkit-box-orient: vertical;
+        }
+
+        .btn-primary {
+            background-color: #e6005c;
+            border: none;
+            transition: background-color 0.2s ease;
+        }
+
+            .btn-primary:hover {
+                background-color: #b80048;
+            }
+
+        .rounded-4 {
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+<body>
+    @{
+        Layout = "UserLayout";
+    }
+
+    <div class="container py-5">
+        <div class="row justify-content-center g-4">
+            @foreach (var m in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
+                    <div class="card product-card shadow-sm w-100 h-100">
+                        <img src="@Url.Content(m.ImageUrl)" alt="@m.Name" class="object-fit-cover">
+                        <div class="card-body">
+                            <h5 class="card-title">@m.Name</h5>
+                            <p class="mb-1">Price: <strong>$@m.Price</strong></p>
+                            <p class="card-text">@m.Description</p>
+                            <a href="@Url.Action("AddToCart", "Order", new { id = m.Id })" class="btn btn-primary mt-3 w-100 rounded-pill">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

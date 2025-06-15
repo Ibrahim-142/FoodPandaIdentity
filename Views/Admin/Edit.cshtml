@@ -1,0 +1,91 @@
+﻿@{
+    Layout = "AdminLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Food Item</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .form-card {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h3, h4 {
+            color: #e6005c;
+            font-weight: bold;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+        .btn-custom {
+            background-color: #007bff;
+            border: none;
+        }
+
+            .btn-custom:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid d-flex flex-column align-items-center justify-content-center min-vh-100">
+        <h3 class="mb-4 text-center">Welcome Admin</h3>
+
+        <form method="post" action="/Admin/EditProduct" class="form-card">
+            <h4 class="text-center mb-4">Edit Food Item</h4>
+
+            <div class="mb-3">
+                <label for="primaryKey" class="form-label">Product ID</label>
+                <input type="text" class="form-control" id="primaryKey" name="id" placeholder="Enter Product ID" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="newName" class="form-label">New Name</label>
+                <input type="text" class="form-control" id="newName" name="name" placeholder="Enter new name">
+            </div>
+
+            <div class="mb-3">
+                <label for="newType" class="form-label">New Category</label>
+                <input type="text" class="form-control" id="newType" name="category" placeholder="e.g. Fast Food, Dessert">
+            </div>
+
+            <div class="mb-3">
+                <label for="newPrice" class="form-label">New Price ($)</label>
+                <input type="number" step="0.01" class="form-control" id="newPrice" name="price" placeholder="e.g. 9.99">
+            </div>
+
+            <div class="mb-3">
+                <label for="newDescription" class="form-label">New Description</label>
+                <textarea class="form-control" id="newDescription" name="description" rows="2" placeholder="Enter a short description"></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="newImageUrl" class="form-label">New Image URL</label>
+                <input type="text" class="form-control" id="newImageUrl" name="imageUrl" placeholder="https://example.com/image.jpg">
+            </div>
+
+            <button type="submit" class="btn btn-custom w-100">Save Changes</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
